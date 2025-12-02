@@ -1,0 +1,1 @@
+var sessionURL= 'https://ssio10.nchat.naver.com:443?auth=6SUTDOPzpZwPfi5MY9wjQJ_tzr4BYENCu7j9_XfG0UyfAayJkthmQMmKI82v4FHEs9pdaAsfteK8a-yeVCGpg7pCooebKR_sDNRffLYHgUJMBZzLfwE-96U6LqZeLvRw'

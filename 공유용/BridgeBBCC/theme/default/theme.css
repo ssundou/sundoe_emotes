@@ -1,0 +1,312 @@
+﻿/* 폰트 로드 */
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+/* 위치 기본 설정 */
+html {
+	overflow: hidden;
+}
+
+body {
+	position: absolute;
+	margin: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+
+/* 최대(기본) 크기는 112px */
+img.emote {
+	max-height: 50px;
+}
+
+img.dccon {
+	max-height: 100px;
+}
+
+/* 구독자 및 후원 메세지 설정 */
+@keyframes SubsAni {
+	50% {
+		color: red;
+	}
+}
+
+.chat_subscribe_box,
+.chat_cheer_box {
+	text-align: center;
+	animation: SubsAni 1s ease 0s 6;
+}
+
+.chat_cheer_text {
+	color: red;
+	display: inline-block;
+}
+
+	.chat_cheer_text img.cheer_icon {
+		max-height: 1em;
+		vertical-align: middle;
+	}
+
+/* 배경 설정 */
+#background {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+/* 폰트 설정 */
+html {
+	font-family: 'cwtexyen', 'Jeju Gothic', serif;
+	font-size: 25px;
+	color: #fffafc;
+	text-shadow: 0 0 3px #ffb6c1, 0 0 5px #ffc0cb, -1px -1px 2px black, 1px 1px 2px black;
+}
+
+/* ====== 채팅박스 ====== */
+.chat_outer_box {
+	position: relative;
+	z-index: 0;
+	overflow: hidden;
+	margin-top: 8px;
+	border: 1px solid rgba(255, 192, 203, 0.6);
+	padding: 8px;
+	border-radius: 12px;
+	background: rgba(255, 182, 193, 0.15);
+	box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+	animation: chatAppear 0.4s ease-out, chatFadeOut 1s ease-in 60s forwards;
+	transition: transform 0.2s ease;
+}
+
+	/* 마우스 올리면 사라짐 일시정지 */
+	.chat_outer_box:hover {
+		animation-play-state: paused;
+		transform: scale(1.03);
+		box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+	}
+
+@keyframes chatAppear {
+	0% {
+		opacity: 0;
+		transform: translateY(20px) scale(0.95);
+	}
+
+	60% {
+		opacity: 1;
+		transform: translateY(-5px) scale(1.02);
+	}
+
+	100% {
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes chatFadeOut {
+	from {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(-20px) scale(0.9);
+	}
+}
+
+/* 내부 박스 */
+.chat_inner_box, .chat_upper_box {
+	margin-bottom: 3px;
+}
+
+/* 닉네임 및 뱃지 */
+.chat_nickname_box {
+	display: inline-flex;
+	align-items: center;
+	color: #ff99cc;
+	font-weight: bold;
+	text-shadow:
+	/* 검은 외곽선 (가독성) */
+	-1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000, 1px 1px 2px #000,
+	/* 밝은 핑크 글로우 (빛 효과) */
+	0 0 4px #ffb6c1, 0 0 8px #ffc0cb, 0 0 12px #ff99cc;
+}
+
+/* 닉네임 왼쪽에 뱃지 배치 */
+.chat_badge_box {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin-right: 6px;
+}
+
+	/* 뱃지 크기 */
+	.chat_badge_box img,
+	.chat_badge_box .badge img {
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+	}
+
+	/* 커스텀 뱃지 스타일 */
+	.chat_badge_box .badge {
+		width: 32px;
+		height: 32px;
+		border-radius: 6px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(255, 182, 193, 0.25);
+		box-shadow: 0 0 6px rgba(255,182,193,0.6);
+		border: 1px solid rgba(255,192,203,0.8);
+	}
+
+/* 뱃지 색상 */
+.badge.streamer {
+	background: rgba(255,105,180,0.4);
+}
+
+.badge.subscriber {
+	background: rgba(255,182,193,0.3);
+}
+
+.badge.vip {
+	background: rgba(255,240,245,0.4);
+}
+
+.chat_nickname_box img {
+	margin-right: 0.3em;
+}
+
+/* 메시지 박스 */
+.chat_outer_box .chat_msg_box,
+.chat_lower_box {
+	clear: right;
+}
+
+.chat_msg_box {
+	white-space: pre-line;
+	word-break: break-word;
+	max-height: 200px;
+	padding: 5px 10px;
+	color: #fff;
+	background: rgba(255, 182, 193, 0.1);
+	border-radius: 10px;
+	display: inline-block;
+}
+
+	.chat_msg_box.image_only {
+		text-align: left;
+	}
+
+/* 클립 포함 */
+.clip_included .chat_msg_box {
+	max-height: 160px;
+}
+
+.chat_clip_box {
+	position: relative;
+}
+
+	.chat_clip_box img {
+		height: 56px;
+		float: left;
+	}
+
+.chat_clip_title {
+	line-height: 56px;
+	text-align: center;
+	white-space: pre;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.chat_clip_by {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 0.7em;
+}
+
+.chat_clip_box.text_only {
+	text-align: center;
+}
+
+/* 이모티콘 및 애니메이션 */
+.bbig, .bbig .dccon, .bbig .emote {
+	min-height: 200px;
+}
+
+	.bbig .notani {
+		min-height: 100px;
+	}
+
+.jjibu {
+	position: relative;
+	min-height: 100px;
+	width: 100%;
+	text-align: center;
+}
+
+	.jjibu img:first {
+		animation: none;
+	}
+
+	.jjibu img {
+		position: absolute;
+		bottom: 0;
+		animation: changeHeight 0.1s 0.5s forwards;
+	}
+
+		.jjibu img.notani {
+			z-index: -1;
+			margin-left: -90px;
+			animation: none;
+		}
+
+.binglebingle {
+	animation: rotate_image 0.8s linear infinite;
+	transform-origin: 50% 50%;
+}
+
+.faaastest {
+	--animate-duration: 0.2s;
+}
+
+.change_mamijo img {
+	animation: changeMamijo 5s 1s forwards;
+	transition: opacity 1s;
+}
+
+/* 애니메이션 정의 */
+@keyframes changeHeight {
+	from {
+		min-height: 0;
+		height: 100px;
+		min-width: 0px;
+	}
+
+	to {
+		min-height: 0;
+		height: 20px;
+		min-width: 120px;
+	}
+}
+
+@keyframes changeMamijo {
+	from {
+		opacity: 0%;
+	}
+
+	to {
+		opacity: 100%;
+		content: url('./images/dccon/TH/13마미조.png') !important;
+	}
+}
+
+@keyframes rotate_image {
+	100% {
+		transform: rotate(360deg);
+	}
+}
